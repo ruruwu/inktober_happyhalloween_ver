@@ -1,4 +1,8 @@
-# INKTOCTOBER｜十月繪圖占卜
+# The Witch’s Deck｜十月繪圖占卜
+
+*Draw three cards. Find your next drawing idea.*
+
+翻開三張牌，找到下一張畫的靈感。
 
 每日翻開三張塔羅風格卡牌，從主題／角色、附加元素與色彩／風格三個卡池中，各抽一張作為繪圖靈感。
 
