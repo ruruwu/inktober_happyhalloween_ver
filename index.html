@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INKTOCTOBER｜十月繪圖占卜</title>
+<meta name="description" content="每日翻開三張塔羅風格卡牌，抽出角色、附加元素與色彩。鎖定喜歡的牌，留下你的十月繪圖靈感。">
+<meta name="theme-color" content="#120d12">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="INKTOCTOBER｜十月繪圖占卜">
+<meta property="og:description" content="每日翻開三張牌，讓命運替你挑選今天的繪圖靈感。">
+<link rel="canonical" href="https://ruruwu.github.io/inktober_happyhalloween_ver/">
+<meta property="og:url" content="https://ruruwu.github.io/inktober_happyhalloween_ver/">
+<meta property="og:image" content="https://ruruwu.github.io/inktober_happyhalloween_ver/og-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="深酒紅與舊金色的三張塔羅風格卡牌">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INKTOCTOBER｜十月繪圖占卜">
+<meta name="twitter:description" content="每日翻開三張牌，讓命運替你挑選今天的繪圖靈感。">
+<meta name="twitter:image" content="https://ruruwu.github.io/inktober_happyhalloween_ver/og-preview.png">
+<style>
+:root {
+  --bg:#120d12;
+  --panel:#1b1218;
+  --wine:#4b2030;
+  --wine2:#2d1721;
+  --gold:#c6a15b;
+  --gold2:#8d6a36;
+  --paper:#e7dcc1;
+  --ink:#22191b;
+  --muted:#b7a990;
+  --line:rgba(198,161,91,.34);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; color:var(--paper);
+  font-family: "Noto Serif TC","Times New Roman",serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(101,47,68,.22), transparent 24rem),
+    radial-gradient(circle at 80% 15%, rgba(87,66,122,.16), transparent 20rem),
+    linear-gradient(#100b10,#171018 60%,#0d090d);
+}
+body:before {
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.28;
+  background-image:repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.012) 4px);
+}
+.wrap{max-width:1180px;margin:auto;padding:42px 22px 64px}
+header{text-align:center;margin-bottom:28px}
+.eyebrow{letter-spacing:.35em;color:var(--gold);font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(32px,6vw,64px);margin:10px 0 4px;font-weight:500;letter-spacing:.08em}
+.subtitle{color:var(--muted);font-size:14px}
+.datebar{margin:20px auto 0;display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);padding:9px 14px;border-radius:999px;background:rgba(0,0,0,.2)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:34px 0 26px}
+.card-wrap{perspective:1200px}
+.card{
+  position:relative; min-height:430px; transform-style:preserve-3d; transition:transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.card.revealed{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;
+  border:1px solid var(--gold2); overflow:hidden;
+  box-shadow:0 18px 45px rgba(0,0,0,.35), inset 0 0 0 4px rgba(198,161,91,.07);
+}
+.back{
+  display:grid;place-items:center;
+  background:
+    radial-gradient(circle at center, transparent 0 52px, var(--line) 53px 54px, transparent 55px),
+    repeating-radial-gradient(circle at center, rgba(198,161,91,.05) 0 1px, transparent 2px 14px),
+    linear-gradient(145deg,#3c1d2a,#171018 62%,#342033);
+}
+.back:before,.front:before{content:"";position:absolute;inset:11px;border:1px solid var(--line);border-radius:15px;pointer-events:none}
+.sigils{font-size:78px;color:var(--gold);filter:drop-shadow(0 0 16px rgba(198,161,91,.2));}
+.back small{position:absolute;bottom:32px;color:var(--muted);letter-spacing:.28em}
+.front{
+  transform:rotateY(180deg); background:linear-gradient(165deg,#eadfc6,#d7c7a7);color:var(--ink);
+  display:flex;flex-direction:column;justify-content:space-between;padding:32px 28px 24px;text-align:center;
+}
+.card-number{font-size:11px;letter-spacing:.3em;color:#775c36}
+.symbol{font-size:52px;margin:26px 0 8px}
+.kind{font-size:12px;letter-spacing:.25em;color:#866a40}
+.value{font-size:clamp(25px,3vw,36px);line-height:1.32;margin:auto 0;font-weight:600}
+.actions{display:flex;gap:8px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+button{
+  font:inherit;color:var(--paper);border:1px solid var(--gold2);background:#25151d;
+  border-radius:999px;padding:9px 14px;cursor:pointer;transition:.18s ease;
+}
+button:hover{transform:translateY(-1px);border-color:var(--gold);background:#351d29}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+button.secondary{background:transparent;color:#5b442d;border-color:#9a7b4d}
+button.secondary:hover{background:rgba(95,67,39,.07)}
+.locked{background:#5b2035!important;color:#f0dfb5!important}
+.controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0 38px}
+.controls button{padding:12px 20px}
+.primary{background:linear-gradient(#5d2a3e,#3b1d2b);box-shadow:0 7px 24px rgba(0,0,0,.2)}
+.panel{border:1px solid var(--line);border-radius:20px;background:rgba(27,18,24,.75);padding:22px;backdrop-filter:blur(8px)}
+.calendar-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.calendar-head h2{margin:0;font-weight:500}
+.calendar-head small{color:var(--muted)}
+.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.week div{text-align:center;color:var(--muted);font-size:11px;padding:5px}
+.day{
+ min-height:74px;border:1px solid rgba(198,161,91,.18);border-radius:12px;padding:8px;
+ background:rgba(255,255,255,.018);position:relative;cursor:pointer;
+}
+.day:hover{border-color:var(--gold2)}
+.day.empty{opacity:0;pointer-events:none}
+.day.future{opacity:.34;cursor:not-allowed}
+.day.current{outline:1px solid var(--gold);background:rgba(198,161,91,.08)}
+.day.saved:after{content:"✦";position:absolute;right:8px;bottom:6px;color:var(--gold);font-size:12px}
+.day .n{font-size:12px;color:var(--muted)}
+.day .mini{margin-top:8px;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#d2c09a}
+.note{margin-top:14px;color:var(--muted);font-size:12px;line-height:1.7}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(15px);opacity:0;pointer-events:none;background:#24161d;border:1px solid var(--gold2);padding:10px 16px;border-radius:999px;transition:.25s}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:800px){
+ .cards{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+ .card{min-height:390px}
+ .day{min-height:58px}
+ .day .mini{display:none}
+}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.about{margin-top:24px;line-height:1.8}.about summary{cursor:pointer;color:var(--gold)}
+footer{text-align:center;margin-top:24px;color:var(--muted);font-size:12px}a{color:var(--gold)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">October Drawing Divination</div>
+  <h1>INKTOCTOBER</h1>
+  <div class="subtitle">每日翻開三張牌，決定今天的角色、元素與色彩。</div>
+  <div class="datebar">☾ <span id="selectedDate"></span> ✦</div>
+</header>
+
+<section class="cards" id="cards"></section>
+
+<div class="controls">
+  <button class="primary" id="revealBtn">✦ 揭示今日三張牌</button>
+  <button id="rerollBtn">↻ 重抽未鎖定牌</button>
+  <button id="copyBtn">⧉ 複製今日題目</button>
+</div>
+
+<section class="panel">
+  <div class="calendar-head">
+    <div>
+      <div class="eyebrow">Archive</div>
+      <h2>2026 年 10 月占卜紀錄</h2>
+    </div>
+    <small>點選已有紀錄的日期可回顧</small>
+  </div>
+  <div class="week"><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div>
+  <div class="calendar" id="calendar"></div>
+  <div class="note">每日第一次開啟會得到固定的三張牌，結果會保存在你的瀏覽器中。重抽後也會覆蓋保存成當天最終版本；鎖住的牌不會被重抽。</div>
+</section>
+<details class="panel about"><summary>關於這個工具</summary>
+<p>這是一個萬聖節與十月繪圖挑戰的靈感抽籤器。從三個各有 50 張卡的池子，抽出主題／角色、附加元素與色彩／風格，共有 125,000 種組合。塔羅牌是視覺風格，抽到的內容供自由創作參考。</p>
+<p>同一天、同一版本的初始題目相同。你可以鎖定喜歡的牌，再重抽其他牌；重抽會更新該日紀錄。日曆依你裝置的當地日期開放，2026 年 10 月結束後仍可回顧。</p>
+<p>紀錄只存放在目前的瀏覽器，不會同步到其他裝置。清除網站資料或使用無痕模式，可能讓紀錄消失。本頁沒有登入、分析追蹤或資料上傳功能。</p>
+<button id="clearBtn" type="button">清除我的抽卡紀錄</button>
+</details>
+<footer>INKTOCTOBER · v0.3.1 · <a href="https://github.com/ruruwu" target="_blank" rel="noopener noreferrer">作者 GitHub</a></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite">已複製</div>
+
+<script>
+const POOLS = [["吸血鬼貴族", "狼人", "中國殭屍", "木乃伊", "墮天使", "死神", "蛇妖／蛇神", "狐妖", "貓妖／貓神", "克朗普斯", "西方女巫", "沙漠魔法精靈", "黑森林女巫", "森林妖精", "孔雀妖精", "月夜幽靈", "水鬼／河神", "山神／獸神", "亡靈祭司", "沙漠死靈法師", "墨西哥亡靈節", "威尼斯狂歡節面具", "日本狐面／妖狐", "日本鬼女", "韓國鬼新娘", "中國鬼新娘", "印度娜迦", "古埃及貓神", "西班牙亡靈舞者", "加勒比海巫術祭司", "血腥護士", "哥德式修女", "黑暗神父", "黑騎士", "忍者幽靈", "幽靈海賊", "維多利亞喪服貴婦", "死刑執行人", "沙漠王族／王妃", "黑暗獵人", "南瓜幽靈", "小惡魔", "黑貓", "兔子", "愛麗絲", "小丑／丑角", "人偶／玩偶", "魔法學徒", "哥德蘿莉", "萬聖節糖果精靈"], ["南瓜", "蝙蝠", "蜘蛛網", "烏鴉", "黑貓", "骷髏", "蠟燭", "棺材", "蝙蝠翅膀", "幽靈", "月亮", "星星", "鐘錶", "沙漏", "鑰匙", "鏡子", "魔法陣", "符咒", "藥瓶", "水晶", "黑玫瑰", "曼陀羅花", "蝴蝶", "飛蛾", "蛇", "蜘蛛", "荊棘", "藤蔓", "蘑菇", "羽毛", "蕾絲", "蝴蝶結", "鎖鏈", "珍珠", "面具", "皇冠", "項圈", "緞帶", "刺繡", "羽毛披肩", "提燈", "鈴鐺", "紅酒杯", "音樂盒", "玩偶", "書本", "撲克牌", "鳥籠", "玫瑰十字架", "彩繪玻璃"], ["南瓜橘 × 黑", "血腥紅 × 黑", "暗紫 × 銀", "森林綠 × 金", "黑 × 白", "黑 × 金", "黑 × 銀", "酒紅 × 象牙白", "深藍 × 黑", "紫紅 × 暗金", "藍寶石藍 × 銀", "石榴石紅 × 黑", "孔雀石綠 × 金", "紫水晶紫 × 銀", "古銅金 × 深棕", "玫瑰金 × 酒紅", "青金石藍 × 金", "琥珀橘 × 深綠", "珍珠白 × 銀", "赤銅色 × 黑", "夢幻粉 × 灰", "霧藍 × 白", "奶油白 × 淺金", "鼠尾草綠 × 米白", "淡紫 × 珍珠白", "薄荷綠 × 銀", "淺櫻粉 × 酒紅", "冰藍 × 深藍", "淡黃 × 棕", "灰紫 × 黑", "復古棕 × 黃銅", "莓果紅 × 灰粉", "灰綠 × 古銅", "古典玫瑰 × 奶油白", "墨綠 × 深棕", "暗酒紅 × 象牙白", "煙燻藍 × 銀灰", "焦糖橘 × 巧克力棕", "暗金 × 深紫", "鐵灰 × 暗紅", "單色系：全身以同一色系深淺變化呈現。", "黑白雙色：只使用黑與白，強調剪影。", "撞色設計：使用兩種對比強烈的顏色。", "透明材質：薄紗、玻璃、透明塑料。", "金屬質感：金屬配件、鎧甲、金屬光澤。", "古董質感：做舊蕾絲、黃銅、泛黃布料。", "糖果配色：高彩度粉彩、糖果色。", "暗黑哥德：低明度、黑色為主、少量鮮豔點綴。", "螢光色系：螢光綠、亮粉、電光藍。", "漸層色彩：服裝由一種顏色漸變至另一種顏色。"]];
+const META = [
+  {kind:"主題／角色",symbol:"☾"},
+  {kind:"附加元素",symbol:"✦"},
+  {kind:"色彩／風格",symbol:"◈"}
+];
+const YEAR=2026, MONTH=9; // 0-based October
+const STORE_KEY="inktoctobor_tarot_v03";
+const today=new Date();
+const localTodayKey=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+let selectedKey = (today.getFullYear()===YEAR && today.getMonth()===MONTH) ? localTodayKey : "2026-10-03";
+let state = loadState();
+let locks=[false,false,false];
+let revealed=false;
+
+function loadState(){
+ try{const raw=JSON.parse(localStorage.getItem(STORE_KEY))||{};const valid={};
+ for(const [key,entry] of Object.entries(raw)){if(/^2026-10-(0[1-9]|[12][0-9]|3[01])$/.test(key)&&Array.isArray(entry?.result)&&entry.result.length===3&&entry.result.every((value,i)=>POOLS[i].includes(value)))valid[key]=entry;}return valid;
+ }catch{return {}} }
+
+function saveState(){try{localStorage.setItem(STORE_KEY,JSON.stringify(state));}catch{showToast("瀏覽器無法保存紀錄，本次仍可抽卡。");}renderCalendar();}
+function hashString(str){
+  let h=2166136261;
+  for(let i=0;i<str.length;i++){ h^=str.charCodeAt(i); h=Math.imul(h,16777619); }
+  return h>>>0;
+}
+function seededIndex(seed,len){ return hashString(seed)%len; }
+function makeDaily(key){
+  return POOLS.map((p,i)=>p[seededIndex(`${key}|${i}|inktoctobor`,p.length)]);
+}
+function getResult(key){
+  if(!state[key]) state[key]={result:makeDaily(key), savedAt:Date.now()};
+  return state[key].result;
+}
+function isFutureKey(key){ return key>localTodayKey; }
+
+function renderCards(){
+  const result=getResult(selectedKey);
+  const cards=document.getElementById("cards");
+  cards.innerHTML=result.map((value,i)=>`
+    <div class="card-wrap">
+      <div class="card ${revealed?'revealed':''}" id="card-${i}">
+        <div class="face back">
+          <div class="sigils">${META[i].symbol}</div>
+          <small>CARD 0${i+1}</small>
+        </div>
+        <div class="face front">
+          <div>
+            <div class="card-number">ARCANA · 0${i+1}</div>
+            <div class="symbol">${META[i].symbol}</div>
+            <div class="kind">${META[i].kind}</div>
+          </div>
+          <div class="value">${escapeHtml(value)}</div>
+          <div class="actions">
+            <button class="secondary ${locks[i]?'locked':''}" onclick="toggleLock(${i})">${locks[i]?'🔒 已鎖定':'🔓 鎖定此牌'}</button>
+            <button class="secondary" onclick="rerollOne(${i})" ${locks[i]?'disabled':''}>↻ 單張重抽</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join("");
+  document.getElementById("selectedDate").textContent=formatDate(selectedKey);
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+function formatDate(key){
+ const [y,m,d]=key.split("-"); return `${y} / ${m} / ${d}`;
+}
+window.toggleLock=function(i){locks[i]=!locks[i];renderCards();}
+window.rerollOne=function(i){
+ if(locks[i])return;
+ const cur=getResult(selectedKey);
+ let next=cur[i]; let tries=0;
+ while(next===cur[i] && tries<20){ next=POOLS[i][Math.floor(Math.random()*POOLS[i].length)]; tries++; }
+ cur[i]=next; state[selectedKey].result=cur; saveState(); revealed=true; renderCards();
+}
+document.getElementById("revealBtn").onclick=()=>{revealed=true;renderCards();};
+document.getElementById("rerollBtn").onclick=()=>{
+ const cur=getResult(selectedKey);
+ cur.forEach((_,i)=>{
+   if(locks[i])return;
+   let next=cur[i],tries=0;
+   while(next===cur[i] && tries<20){next=POOLS[i][Math.floor(Math.random()*POOLS[i].length)];tries++;}
+   cur[i]=next;
+ });
+ state[selectedKey].result=cur; saveState(); revealed=true; renderCards();
+};
+document.getElementById("copyBtn").onclick=async()=>{
+ const r=getResult(selectedKey);
+ const text=`${formatDate(selectedKey)} 今日繪圖占卜\n主題：${r[0]}\n元素：${r[1]}\n色彩／風格：${r[2]}`;
+ try{ await navigator.clipboard.writeText(text); showToast("已複製今日題目 ✦"); }
+ catch{ showToast("瀏覽器未允許複製"); }
+};
+function showToast(t){
+ const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1400)
+}
+function renderCalendar(){
+ const cal=document.getElementById("calendar");cal.innerHTML="";
+ const first=new Date(YEAR,MONTH,1).getDay();
+ const days=new Date(YEAR,MONTH+1,0).getDate();
+ for(let i=0;i<first;i++){ const e=document.createElement("div");e.className="day empty";cal.appendChild(e); }
+ for(let d=1;d<=days;d++){
+   const key=`2026-10-${String(d).padStart(2,'0')}`;
+   const div=document.createElement("button");
+   div.type="button";
+   const future=isFutureKey(key);
+   div.disabled=future;
+   div.setAttribute("aria-label",`${formatDate(key)}${future?"，尚未開放":"，查看題目"}`);
+   div.className="day"+(future?" future":"")+(key===selectedKey?" current":"")+(state[key]?" saved":"");
+   const mini=state[key]?state[key].result[0]:(future?"尚未揭牌":"未抽取");
+   div.innerHTML=`<div class="n">${d}</div><div class="mini">${escapeHtml(mini)}</div>`;
+   if(!future) div.onclick=()=>{
+      selectedKey=key;locks=[false,false,false];revealed=!!state[key];
+      if(!state[key]){getResult(key);saveState();}
+      renderCards();renderCalendar();
+   };
+   cal.appendChild(div);
+ }
+}
+document.getElementById("clearBtn").onclick=()=>{
+ if(!confirm("清除所有抽卡紀錄？重抽過的結果將無法復原。"))return;
+ try{localStorage.removeItem(STORE_KEY);}catch{showToast("無法清除，請至瀏覽器設定清除本站資料。");return;}
+ state={};locks=[false,false,false];revealed=false;renderCards();state={};renderCalendar();showToast("已清除抽卡紀錄");
+};
+getResult(selectedKey); saveState(); renderCards(); renderCalendar();
+</script>
+</body>
+</html>
